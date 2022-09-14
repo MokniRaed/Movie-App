@@ -1,15 +1,4 @@
-import { useState } from "react";
-import "./App.css";
-import ListMovies from "./Components/ListMovies";
-import MovieCard from "./Components/MovieCard";
-import AddMovie from "./Components/AddMovie";
-import { Button } from "bootstrap";
-import Search from "./Components/Search";
-import Rate from "./Components/Rate";
-
-function App() {
-  //******This is the Api *******/
-  const [Movies, setMovies] = useState([
+export const MoviesApi = [
     {
       _id: "5fedeef47c0ffe00176db1ca",
       title: "Devil's Mile",
@@ -94,51 +83,4 @@ function App() {
       category: "Biography | Crime | Drama",
       __v: 0,
     },
-  ]);
-  //******** Show and Hide Function  *********/
-  const [show, setShow] = useState(false);
-  const handleShow = () => setShow(!show);
-
-  const [showRate, setShowRate] = useState(false);
-  const handleShowRate = () => {
-    setSearchRate(0);
-    setShowRate(!showRate);
-  };
-
-  //******** Search States*********/
-  const [searchName, setSearchName] = useState("");
-  const [searchRate, setSearchRate] = useState(5);
-
-  //******** Add Movie  Function  *********/
-  const AddToMovie = (Movie) => {
-    setMovies([...Movies, Movie]);
-  };
-
-  console.log(Movies);
-  return (
-    <>
-      <div className="App">
-        <button style={{ margin: "20px" }} onClick={handleShow}>
-          {show ? "Close" : "Add New Movie"}
-        </button>
-        {show && <AddMovie AddToMovie={AddToMovie} />}
-
-        <Search setSearchName={setSearchName} setSearchRate={setSearchRate} />
-        <button style={{ margin: "20px" }} onClick={handleShowRate}>
-          {show ? "Clear" : "Search by Rate"}
-        </button>
-        {showRate && (
-          <Rate searchRate={searchRate} setSearchRate={setSearchRate} />
-        )}
-
-        <ListMovies
-          Movies={Movies}
-          searchName={searchName}
-          searchRate={searchRate}
-        />
-      </div>
-    </>
-  );
-}
-
-export default App;
+  ];
